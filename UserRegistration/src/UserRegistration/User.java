@@ -56,6 +56,24 @@ public class User
         	throw new ValidUserDetailsException("Valid Last Name");
         }
     }
+	/*
+	 * @desc:This method checks whether a valid email is entered or not
+	 * 
+	 * @params:none
+	 * 
+	 * @returns:boolean
+	 */
+	public void validateEmail() throws InvalidUserDetailsException,ValidUserDetailsException
+	{
+        String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(\\.[\\w!#$%&'*+/=?`{|}~^\\-]+)*@[\\w\\-]+(\\.[A-Za-z\\-]{2,}){0,2}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        if (!matcher.matches()) {
+            throw new InvalidUserDetailsException("Invalid Email");
+        }else {
+        	 throw new ValidUserDetailsException("Valid Email");
+        }
+    }
 }
 class InvalidUserDetailsException extends Exception {
     
