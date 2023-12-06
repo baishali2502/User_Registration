@@ -37,7 +37,25 @@ public class User
         	throw new ValidUserDetailsException("Valid First Name");
         }
     }
-	
+	/*
+	 * @desc:This method checks whether a valid lastname is entered or not
+	 * 
+	 * @params:none
+	 * 
+	 * @returns:boolean
+	 */
+	public void validateLastName() throws InvalidUserDetailsException,ValidUserDetailsException
+	{
+        String regex = "^[A-Z][a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(lastName);
+        if (!matcher.matches()) {
+            throw new InvalidUserDetailsException("Invalid Last Name");
+        }else
+        {
+        	throw new ValidUserDetailsException("Valid Last Name");
+        }
+    }
 }
 class InvalidUserDetailsException extends Exception {
     
