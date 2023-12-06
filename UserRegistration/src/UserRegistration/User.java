@@ -93,6 +93,25 @@ public class User
         	throw new ValidUserDetailsException("Valid Phone Number");
         }
     }
+	/*
+	 * @desc:This method checks whether a valid password is entered or not
+	 * 
+	 * @params:none
+	 * 
+	 * @returns:boolean
+	 */
+	public void validatePassword() throws InvalidUserDetailsException,ValidUserDetailsException
+	{
+        String regex = "^(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z\\d]).{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        if (!matcher.matches()) {
+            throw new InvalidUserDetailsException("Invalid Password");
+        }else
+        {
+        	throw new ValidUserDetailsException("Valid Password");
+        }
+    }
 }
 class InvalidUserDetailsException extends Exception {
     
