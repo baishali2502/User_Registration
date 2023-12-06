@@ -74,6 +74,25 @@ public class User
         	 throw new ValidUserDetailsException("Valid Email");
         }
     }
+	/*
+	 * @desc:This method checks whether a valid phone is entered or not
+	 * 
+	 * @params:none
+	 * 
+	 * @returns:boolean
+	 */
+	public void validatePhone() throws InvalidUserDetailsException,ValidUserDetailsException
+	{
+        String regex = "^\\d{2} \\d{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phone);
+        if (!matcher.matches()) {
+            throw new InvalidUserDetailsException("Invalid Phone Number");
+        }else
+        {
+        	throw new ValidUserDetailsException("Valid Phone Number");
+        }
+    }
 }
 class InvalidUserDetailsException extends Exception {
     
